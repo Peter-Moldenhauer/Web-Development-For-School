@@ -18,3 +18,12 @@ console.log(mack.pop());
 // → Knife
 console.log(mack);
 // → ["Mack", "the"]
+
+/************************************************
+Print Out all objects in an array:
+
+for (var i = 0; i < array.length; i++) {
+  var current = array[i];
+  console.log(current);
+}
+**************************************************/
