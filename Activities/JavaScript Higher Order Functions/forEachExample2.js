@@ -23,3 +23,42 @@ forEach(numbers, function(number) {
 console.log(sum);
 // Prints: 15
 
+
+// Another Example of forEach loop...
+function Student( name ) {
+    this.name = name;  
+}
+
+Student.prototype.sayName = function ()  { console.log("Hi my name is " + this.name); };
+
+var theStudents = [
+	new Student("Terry"),
+	new Student("Bryant"),
+	new Student("Ralph")
+];
+
+theStudents.forEach( function(student) {
+    student.sayName();
+});
+//Prints:
+// Hi my name is Terry
+// Hi my name is Bryant
+// Hi my name is Ralph 
+
+/*
+
+To pass an argument to (for instance) sayName, you'd just modify like so:
+ 
+theStudents.forEach( function(student) {
+    student.sayName( --parameter-- );
+});
+
+*/
+
+
+
+
+
+
+
+

@@ -122,7 +122,7 @@ function typeComparator( auto1, auto2){
 
 console.log("*****");
 
-// Cars sorted by year
+// Cars sorted by year - Using a for loop
 console.log("The cars sorted by year are:");
 sortArr(yearComparator, automobiles);
 for (var i = 0; i < automobiles.length; i++)
@@ -131,23 +131,23 @@ for (var i = 0; i < automobiles.length; i++)
 }
 console.log();
 
-// Cars sorted by make
+// Cars sorted by make - Using a forEach loop
 console.log("The cars sorted by make are:");
 sortArr(makeComparator, automobiles);
-for (var i = 0; i < automobiles.length; i++)
-{
-    automobiles[i].logMe(false);
-}
+automobiles.forEach( function(automobile) {
+    automobile.logMe(false);
+});
 console.log();
 
-// Cars sorted by type
+// Cars sorted by type - Using a forEach loop
 console.log("The cars sorted by type are:");
 sortArr(typeComparator, automobiles);
-for (var i = 0; i < automobiles.length; i++)
-{
-    automobiles[i].logMe(true);
-}
+automobiles.forEach( function(automobile) {
+    automobile.logMe(true);
+});
+
 console.log("*****");
+
 
 
 
