@@ -1,0 +1,20 @@
+<!-- This demonstrates the basics of a request from JavaScript to a server somewhere that gets us data back that we can look at --> 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+		<!-- the openweathermap api lets you querry and find out what the weather is like at any given location --> 
+		<!-- this is about the simplist that we can get with a request from JavaScript - only 4 lines here -->
+		
+		var req = new XMLHttpRequest(); <!-- this first line we make a variable, the variable will be a new XMLHttpRequest --> 
+		req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Corvallis,or&appid=fa7d80c48643dfadde2cced1b1be6ca1", false); <!-- this next line we will open the request "hey here is the thing we actually want to request" -->
+		<!-- the first argument (above) is a "GET" request, the next is the URL that we want to make the request to (note that besides the web address we have a querry parameter to get the city and state - Corvallis, OR and we also have the appId querry parameter), the last argument is "false" which means that its a syncronous (not ascyncronus) request --> 
+		req.send(null); <!-- on this line we send the request, "null" means that we are not sending any additional data --> 
+		console.log(JSON.parse(req.responseText));  <!-- the response will come back as a string in the "responseText" field of the request, this is going to come back and then be parsed into a JSON object - we then print the object to the console --> 
+		<!-- If we wanted to we could access all of the properties of the object that was just returned and do things with them --> 
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
