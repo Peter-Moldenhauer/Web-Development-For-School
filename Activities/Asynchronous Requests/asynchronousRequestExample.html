@@ -1,0 +1,53 @@
+<!-- This is an example of a simple asynchronous operation --> 
+
+<!DOCTYPE html>
+<html>
+  <head>  
+  </head>
+  
+  <body>
+    <p>Live Example</p>
+	<button id="alertStart">Show span content after 2 seconds.</button>
+	<p><span id="timerAlert"></span></p>
+	<div id="otherContent"></div>
+  
+  <script>
+		function delayedAlert() {
+			window.setTimeout(slowAlert, 2000);
+			document.getElementById("otherContent").textContent = "But work continues!";
+		}
+
+		function slowAlert() {
+			document.getElementById("timerAlert").textContent = "That was really slow!";
+		}
+
+		document.getElementById("alertStart").addEventListener("click",delayedAlert);
+    </script>
+  </body>
+</html>
+
+<!-- When you click the button two things happen, the first is an asynchronous call is made to display text in the span. 
+And after that content is displayed to the div that says "But work continues". What is interesting is the div content 
+shows up before the span content even though the call to make the span content show up happens first.
+ 
+This is an asynchronous call. We make a call and at some later time it gets done. In this case it is kind of silly because 
+we could just do it immediately. But with something like a network request it could potentially take a second to finish. 
+And we don't want our page to freeze for that second. We want to keep on doing work while we wait for that function to return. 
+Hence, asynchronous calls. 
+ 
+-- Asynchronous Calls --
+The way asynchronous calls work is via callback functions. The general idea is that you pass the thing that will be doing work a way 
+to 'call you back' when it is done. So in the above example, we pass a callback function that appends content to the span. We then 
+set an arbitrary timer, 2 seconds in this case. After those two seconds pass the window calls the function we passed it and the span 
+gets populated. --> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
