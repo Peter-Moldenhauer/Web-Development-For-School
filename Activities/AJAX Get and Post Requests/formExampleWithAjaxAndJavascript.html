@@ -1,0 +1,98 @@
+<!-- In this example we are going to be getting the URL we want to shorten via a form and then using a div to display the output -->
+<!-- We are using the Google URL shortener API in this example --> 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var apiKey = 'AIzaSyDrJE1aNQ3xU8g1t7u5bfJOkl5IJrDRPVU';
+
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('urlSubmit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+          var payload = {longUrl:null};
+          payload.longUrl = document.getElementById('longUrl').value;
+          req.open('POST', 'https://www.googleapis.com/urlshortener/v1/url?key=' + apiKey, false);
+          req.setRequestHeader('Content-Type', 'application/json');
+          req.send(JSON.stringify(payload));
+          var response = JSON.parse(req.responseText);
+		  console.log(response);  //not necessary here, just log to console so you can see the returned object 
+          document.getElementById('originalUrl').textContent = response.longUrl;
+          document.getElementById('shortUrl').textContent = response.id;
+          event.preventDefault();
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>URL Shortener</legend>
+        <label for="longUrl"></label>
+        <input type="text" name="longUrl" id="longUrl">
+        <input type="submit" id="urlSubmit">
+      </fieldset>
+    </form>
+    <div>
+      <h2>Result</h2>
+      <ul>
+        <li><span>Original URL:</span><span id="originalUrl"></span></li>
+        <li><span>Short URL:</span><span id="shortUrl"></span></li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+<!-- So there is a lot here. It is probably the last full code sample you will see for client side JavaScript in this class as we are going
+ to be combining more and more pieces and they will get too long to show. Lets work through this example.
+ 
+ First we assign our developer key to a variable. This make it clear what to change if someone else wants to run this code and it also makes
+ it easy to easily pull it out all together if we want to publicly share the code and not expose our API key. We can just replace that 
+ key value with a placeholder.
+ 
+ Then we do some familiar stuff. We add a listener to the DOMContentLoaded event and in that event we add a click listener to the 
+ forms submit button. That listener calls preventDefault on the event so we don't actually submit this and cause the browser to reload. 
+ That would break everything.
+ 
+ Now onto the new stuff. This is going to be a POST request, which is not surprising because we are making a new URL. To do that we need to 
+ submit data. We set that up with var payload = {longUrl:null};. longUrl is the name of the key that Google is expecting. In the next line 
+ we get reference to the text field that the user entered the URL into. Then we assign its value contents to the value of longUrl. 
+ For text boxes value contains the entered text. For things like radio buttons or check boxes it contains the contents of the element's 
+ value property, often declared in the HTML directly.
+
+ So now we have the data we want to send stored as an object. We then do what we did in the last sections example by making a new XMLHttpRequest. 
+ Then we set the content-type request header to let the server know we are sending application/json data (because that is what it said it needed 
+ when we look at the documentation). Then we send the request and the data.
+ 
+ -- JSON.stringify() -- 
+ When we send it we call JSON.stringify passing it our payload object. What this does is converts the object to its JSON representation as a string. 
+ This is what the API wants so it is what we do. If you ever want to check what this is outputting just log it to the console so you can see the string.
+ 
+ -- JSON.parse() -- 
+ This is just like JSON.stringify in reverse. It takes a JSON formatted string and turns it into a JavaScript object. That way you can do things 
+ like access and modify properties. It creates the same sort of object you would create using the basic object notation.
+ 
+ -- Displaying Results --
+ Now that we have sent our request off we need to wait for it to come back (more on dealing with this wait in a later section). Once it gets back 
+ we use the previously mentioned JSON.parse function on the requests responseText. This contains the contents of the response. In this case a JSON string.
+ 
+ Having converted that string into an object we can display it in the same way we have displayed things before. We select elements and set their 
+ textContent to be the text we want to display. --> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

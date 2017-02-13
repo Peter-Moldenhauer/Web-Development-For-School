@@ -1,0 +1,19 @@
+<!-- This demonstrates making a POST with AJAX instead of a GET request --> 
+<!-- This example uses Google's URL shortening service, this lets you take a long URL and convert it to a short URL --> 
+
+<!-- The main difference here from GET is that in POST we have to set the request header and send JSON data (not null) --> 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var req = new XMLHttpRequest();  <!-- make a new request -->
+      req.open("POST", "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAh2sUzWPm-pRQCbgyZijqWcKGFcoXeK2o", false); <!-- open the request -->
+      req.setRequestHeader('Content-Type', 'application/json'); <!-- set the request header --> 
+      req.send('{"longUrl":"http://www.oregonstate.edu"}'); <!-- send the data in a JSON formatted string --> 
+      console.log(JSON.parse(req.responseText)); <!-- parse and log result to the console, should get a shortened URL in the returned JSON data --> 
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
