@@ -1,0 +1,112 @@
+<!-- This is an example of a ASYNCHRONOUS call, a very similar SYNCHRONOUS call can be viewed below (commented out) -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  
+  <body>
+    <form>
+      <fieldset>
+        <legend>URL Shortener</legend>
+        <label for="longUrl"></label>
+        <input type="text" name="longUrl" id="longUrl">
+        <input type="submit" id="urlSubmit">
+      </fieldset>
+    </form>
+    <div>
+      <h2>Result</h2>
+      <ul>
+        <li><span>Original URL:</span><span id="originalUrl"></span></li>
+        <li><span>Short URL:</span><span id="shortUrl"></span></li>
+      </ul>
+    </div>
+	
+	<script>
+      var apiKey = 'AIzaSyDrJE1aNQ3xU8g1t7u5bfJOkl5IJrDRPVU';
+
+		document.getElementById('urlSubmit').addEventListener('click', function(event){
+		var req = new XMLHttpRequest();
+		var payload = {longUrl:null};
+		payload.longUrl = document.getElementById('longUrl').value;
+		req.open('POST', 'https://www.googleapis.com/urlshortener/v1/url?key=' + apiKey, true);
+		req.setRequestHeader('Content-Type', 'application/json');
+		req.addEventListener('load',function(){
+			if(req.status >= 200 && req.status < 400){
+				var response = JSON.parse(req.responseText);
+				document.getElementById('originalUrl').textContent = response.longUrl;
+				document.getElementById('shortUrl').textContent = response.id;
+			} else {
+				console.log("Error in network request: " + req.statusText);
+		}});
+		req.send(JSON.stringify(payload));
+		event.preventDefault();
+		});
+    </script>
+  </body>
+</html>
+
+<!-- This is the equivalent function but now in asynchronous form. The changes are we switched false to true in the line where we 
+open the request indicating that it will be an asynchronous request. We add an event listener before we call send. And we move the 
+stuff related to the request that we previously did after the call to send up into that event listener function. So now the function 
+no longer hangs around waiting for the call to finish. -->
+
+
+
+<!-- This is an example similar to above but uses a SYNCHRONOUS call (everything stops until the response is returned) --
+
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  
+  <body>
+    <form>
+      <fieldset>
+        <legend>URL Shortener</legend>
+        <label for="longUrl"></label>
+        <input type="text" name="longUrl" id="longUrl">
+        <input type="submit" id="urlSubmit">
+      </fieldset>
+    </form>
+    <div>
+      <h2>Result</h2>
+      <ul>
+        <li><span>Original URL:</span><span id="originalUrl"></span></li>
+        <li><span>Short URL:</span><span id="shortUrl"></span></li>
+      </ul>
+    </div>
+	
+	<script>
+      var apiKey = 'AIzaSyDrJE1aNQ3xU8g1t7u5bfJOkl5IJrDRPVU';
+
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('urlSubmit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+          var payload = {longUrl:null};
+          payload.longUrl = document.getElementById('longUrl').value;
+          req.open('POST', 'https://www.googleapis.com/urlshortener/v1/url?key=' + apiKey, false);
+          req.setRequestHeader('Content-Type', 'application/json');
+          req.send(JSON.stringify(payload));
+          var response = JSON.parse(req.responseText);
+          document.getElementById('originalUrl').textContent = response.longUrl;
+          document.getElementById('shortUrl').textContent = response.id;
+          event.preventDefault();
+        })
+      }
+    </script>
+  </body>
+</html>
+
+-->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
