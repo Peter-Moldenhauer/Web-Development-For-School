@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset ="UTF-8">
+	<title>AJAX Interactions</title>
+	<link rel ="stylesheet" href = "style.css" type = "text/css">
+	</head>
+	
+	<body>
+		<h2 class ="top"> AJAX Interactions Activity</h2>
+		<br>
+		<div id="weather">
+			<p class = "explain"> Asynchronous Weather Get Request:</p>
+			<form>
+				<fieldset  class = "formBox">
+				<legend>Get weather information by either Zipcode or City, State</legend>
+				<label for ="zipcode">Enter a ZipCode here: </label>
+				<input type = "text" name ="zipcode" id="zipcode"> </input>
+				<input type ="submit" value= "ZipCode" id ="zip" title="Click here to get weather information by zip code"> </input>
+				<br><br>
+				<label for ="locCode">Enter a City, State here: </label>
+				<input type = "text" name ="location" id="location"> </input>
+				<input type ="submit" value= "Location" id ="loc" title="Click here to get weather information by city, state"> </input>
+				</fieldset>
+			</form>
+			
+			<h3 class="returned">This is the weather information retrieved from Open Weather Map: </h3>
+			<ul>
+				<li><span class="bullet">City: </span> <span id = "city" class="blue"></span></li>
+				<li><span class="bullet">Temperature in Fahrenheit: </span> <span id ="temp" class="blue"></span></li>
+				<li><span class="bullet">Humidity: </span> <span id ="humid" class="blue"></span></li>
+				<li><span class="bullet">Wind Speed: </span><span id = "wSpeed" class="blue"></span></li>
+				<li><span class="buullet">Pressure: </span><span id = "pressure" class="blue"></span></li>
+			</ul>
+		</div><br><br>
+
+		
+		<div id="post">
+			<p class = "explain">Asynchronous Post:</p>
+			<form>
+				<fieldset  class = "formBox">
+					<legend>Submit data asynchronously via a POST</legend>
+					<label for ="postText">Enter some text here: </label>
+					<input type = text name = "postText" id ="postText"></input>
+					<input type = submit value ="Submit Text" id ="textSub" title = "Click here to submit text via POST"></input>
+				</fieldset>
+			</form>
+			<h3 class ="returned">This is the data that was returned:</h3>
+			<p id ="things" class="blue"></p>
+		</div>
+					
+	</body>
+	<script src="script.js"></script>
+</html>

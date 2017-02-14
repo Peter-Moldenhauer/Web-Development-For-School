@@ -1,0 +1,23 @@
+body {
+	background-color: #EEDFCC;
+}
+
+.top {
+	border: 3px double #0000FF;
+	background: #C1FFC1;
+	width: 285px; 
+}
+
+.explain {
+	font-weight: bold; 
+	color: #0000FF;
+}
+
+.formBox {
+	 border-color: #3CB371;
+	 width: 420px; 
+}
+
+.blue {
+	color: #0000FF;
+}
