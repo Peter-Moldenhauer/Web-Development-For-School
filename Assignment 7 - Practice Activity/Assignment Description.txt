@@ -1,0 +1,37 @@
+Activity: Practice!
+
+Due: Sunday by 11:59pm  Points: 10  Submitting: a file upload  File Types: pdf
+
+This week is an activity week, so points for effort, not for correctness.
+
+You are about to break a lot of things. It is going to be easier for you to unbreak some things than it is to unbreak others. 
+Spend the time working on the things you have the most trouble with.
+
+Make sure you can create sessions, add and update different kinds of data to sessions and end sessions.
+
+Make sure you can make HTTP requests, including POSTs, from the server and deal with the data you get back.
+
+Make sure that you can set up pages to accept data from forms.
+
+Make sure you can handle nested asynchronous requests and process errors if they crop up (force errors to happen by doing things like 
+entering in the wrong URL).
+
+As an example mini project that would cross off several of these at once (you don't need to do this, but if you need inspiration feel 
+free to use it) , you could extend the to-do list application. Allow the user to add to-do items, the cities those to-do items need to 
+happen in and minimum temperatures.
+
+Then make HTTP calls to Open Weather Map to check if the weather is good enough right now to do them. If it is, highlight it in green, 
+if not highlight it in red. This will check you understanding of sessions, making many HTTP requests and dealing with JSON returned by the server.
+
+You would still want to make sure you can make HTTP POSTs from the server but if you did that all your bases will be covered.
+
+Deliverables:
+
+Submit a PDF. In that PDF discuss in 2 or 3 paragraphs what you had the most difficulty with, what problems it was giving you and 
+what steps you took to fix it. Also briefly describe how you checked your understanding of the above listed topics. What type of things 
+did you do? What services did you use?
+
+It should help you get an understanding of where you need more clarity and it will also help me figure out which concepts need more attention.
+
+Next week you are going to need to do most of these things correctly, while working with a database. So you will want to get it sorted now before 
+we add in the database which is one more thing you will need to debug.
