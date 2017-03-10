@@ -1,0 +1,3 @@
+Databases and UI Assignment URL:
+
+http://flip3.engr.oregonstate.edu:3551/
